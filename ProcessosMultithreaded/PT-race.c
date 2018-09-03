@@ -1,7 +1,7 @@
 /* pthreads - exemplo
  * Utilizado por Fernando Dotti em Sistemas Operacionais
  * Compile:
- * C compiler: ass (or cc -lpthread PT-race.c -o ptr)  
+ * C compiler: ass (or cc -pthread PT-race.c -o ptr)  
  * or
  * C++ compiler: g++ -pthread PT-race.c -o ptr   (or g++ -lpthread  PT-race.c -o ptr))
 */
@@ -26,7 +26,7 @@ void *accessToShared()
  }
 
 
-main()
+int main(void)
 {
      pthread_t thread1, thread2;
      int  iret1, iret2;
@@ -39,7 +39,7 @@ main()
          exit(EXIT_FAILURE);
      }
 	 
-	// pthread_join( thread1, NULL);
+	 pthread_join( thread1, NULL);
     iret2 = pthread_create( &thread2, NULL, accessToShared, NULL);
      if(iret2)
      {
@@ -50,9 +50,10 @@ main()
      /* Espera as threads completarem antes de continuar.
 	    De outra forma corre-se o risco de executar exit antes 
 	    de terminar as threads. */ 
-     pthread_join( thread1, NULL);
+   //  pthread_join( thread1, NULL);
      pthread_join( thread2, NULL); 
      printf("%i global\n", global);
      exit(EXIT_SUCCESS);
+	return (0);
 }
 

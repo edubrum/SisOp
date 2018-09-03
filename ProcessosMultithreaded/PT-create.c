@@ -17,7 +17,7 @@
 
 void *print_message_function( void *ptr );
 
-main()
+int main(void)
 {
      pthread_t thread1, thread2;
      const char *message1 = "Thread 1";
@@ -51,6 +51,7 @@ main()
      pthread_join( thread2, NULL); 
 
      exit(EXIT_SUCCESS);
+	return (0);
 }
 
 void *print_message_function( void *ptr )

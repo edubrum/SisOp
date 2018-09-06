@@ -27,7 +27,7 @@ void lock(int self)         // executado antes da secao critica
     flag[self] = 1;         // flag[self] = 1 diz que quer o lock
     turn = 1-self;          // mas antes daa aa outra trhead a chance de adquirir o lock 
     while (flag[1-self]==1 &&   // espera ate que outra thread nao queira mais o lock
-		   turn==1-self) ;      // ou seja a vez desta thread pegar o lock	
+  turn==1-self) ;      // ou seja a vez desta thread pegar o lock	
 }
  
 void unlock(int self)       // executado depois da secao critica
